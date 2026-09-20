@@ -2,6 +2,14 @@
 
 Daymark is a calm, full-stack todo application built as a small production monorepo. The frontend is a statically exported Next.js application on Vercel; the backend is a Cloudflare Worker with a D1 database and Drizzle ORM.
 
+## Live deployments
+
+- Frontend: [daymark-todo-alpha.vercel.app](https://daymark-todo-alpha.vercel.app)
+- API: [daymark-api.1135611487.workers.dev](https://daymark-api.1135611487.workers.dev)
+- Source: [github.com/fanjlii/daymark-todo](https://github.com/fanjlii/daymark-todo)
+
+Pushes to `main` automatically run GitHub CI, deploy the frontend to Vercel, and apply pending D1 migrations before deploying the Cloudflare Worker. Branch pushes create preview deployments on both hosting platforms.
+
 ## Architecture
 
 ```text
@@ -57,10 +65,10 @@ pnpm verify      # Complete verification pipeline
 ### 1. Cloudflare Worker and D1
 
 1. Create a D1 database named `daymark-db`.
-2. Replace the placeholder `database_id` in `apps/api/wrangler.jsonc` with the created database ID.
-3. From the repository root, run `pnpm --filter @daymark/api deploy` once. This applies pending migrations before publishing the Worker.
+2. Set its `database_id` in `apps/api/wrangler.jsonc`.
+3. From the repository root, run `pnpm --filter @daymark/api run deploy` once. This applies pending migrations before publishing the Worker.
 4. In Cloudflare Workers & Pages, connect this GitHub repository to the Worker.
-5. Use `main` as the production branch and set the deploy command to `pnpm --filter @daymark/api deploy`.
+5. Use `main` as the production branch and set the deploy command to `pnpm --filter @daymark/api run deploy`.
 
 Cloudflare Workers Builds will then create preview versions for branches and deploy `main` automatically. See the [Cloudflare Git integration guide](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/).
 
