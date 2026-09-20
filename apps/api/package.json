@@ -1,0 +1,28 @@
+{
+  "name": "@daymark/api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --local --port 8787",
+    "build": "wrangler deploy --dry-run --outdir dist",
+    "check": "tsc --noEmit",
+    "test": "vitest run",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 migrations apply daymark-db --local",
+    "db:migrate:remote": "wrangler d1 migrations apply daymark-db --remote",
+    "deploy": "pnpm db:migrate:remote && wrangler deploy"
+  },
+  "dependencies": {
+    "drizzle-orm": "0.45.2",
+    "hono": "4.13.8",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20260920.1",
+    "drizzle-kit": "0.31.10",
+    "typescript": "6.0.3",
+    "vitest": "5.0.1",
+    "wrangler": "4.135.0"
+  }
+}

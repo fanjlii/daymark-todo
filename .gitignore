@@ -1,0 +1,16 @@
+node_modules/
+.idea/
+.playwright-cli/
+.next/
+out/
+dist/
+.wrangler/
+.dev.vars
+.env
+.env.local
+*.log
+*.tsbuildinfo
+.DS_Store
+coverage/
+playwright-report/
+test-results/
