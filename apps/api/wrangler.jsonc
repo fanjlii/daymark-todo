@@ -19,7 +19,7 @@
     {
       "binding": "DB",
       "database_name": "daymark-db",
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "f765d9f6-3c0d-4bad-b8da-b2de72845491",
       "migrations_dir": "migrations"
     }
   ]
