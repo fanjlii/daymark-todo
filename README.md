@@ -4,8 +4,8 @@ Daymark is a calm, full-stack todo application built as a small production monor
 
 ## Live deployments
 
-- Frontend: [daymark-todo-alpha.vercel.app](https://daymark-todo-alpha.vercel.app)
-- API: [daymark-api.1135611487.workers.dev](https://daymark-api.1135611487.workers.dev)
+- Frontend: [todo.middleware.top](https://todo.middleware.top)
+- API: [api.middleware.top](https://api.middleware.top)
 - Source: [github.com/fanjlii/daymark-todo](https://github.com/fanjlii/daymark-todo)
 
 Pushes to `main` automatically run GitHub CI, deploy the frontend to Vercel, and apply pending D1 migrations before deploying the Cloudflare Worker. Branch pushes create preview deployments on both hosting platforms.
@@ -81,9 +81,9 @@ Cloudflare Workers Builds will then create preview versions for branches and dep
 
 Vercel will create preview deployments for branches and production deployments from `main`. See the [Vercel Git deployment guide](https://vercel.com/docs/git).
 
-### 3. Optional custom domain
+### 3. Custom domains
 
-If a domain is managed by Cloudflare DNS, point the site hostname to Vercel following Vercel's domain instructions. Add that exact frontend origin to the Worker's `CORS_ORIGINS` variable as a comma-separated URL. Vercel preview URLs and local development origins are accepted automatically.
+Cloudflare is authoritative for `middleware.top`. The `todo` hostname is a DNS-only CNAME to the project-specific Vercel target, while `api.middleware.top` is attached directly to the Worker as a Cloudflare custom domain. `CORS_ORIGINS` is committed in `apps/api/wrangler.jsonc`; Vercel preview URLs and local development origins are accepted automatically.
 
 ## API
 
